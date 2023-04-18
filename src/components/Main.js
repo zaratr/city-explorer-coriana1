@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
+// import '.App.css'
 
 class Main extends React.Component {
   constructor(props) {
@@ -14,45 +15,31 @@ class Main extends React.Component {
     }
   }
 
-  // ** Handles getting the city input from the user and setting it to state for other functions to use
   handleCityInput = (ev) => {
     this.setState({
       city: ev.target.value
     })
   }
 
-  // ** async/await - handle our promises - call back from axios
-  // ** try/catch - handle our errors - TRY resolves our successful promise & CATCH - handle our rejected promise
-
-  // TODO: render a map using the following URL example:
-  // ** https://maps.locationiq.com/v3/staticmap?key=<process.env.REACT_APP_LOCATION_IQ_KEY>&center=<latitude>,<longitude>&zoom=14
-
-
-
-
 
   getCityData = async (ev) => {
     ev.preventDefault();
     try {
-      // TODO: define our url to pass to axios using the city in state
       let url = `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&q=${this.state.city}&format=json`
       let cityData = await axios.get(url)
+      
       let mapUrl = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&center=${cityData.data[0].lat},${cityData.data[0].lon}&zoom=14`
-
       let letResults = await axios.get(mapUrl)
-      console.log('this is the', letResults.config.url)
+      // console.log('this is the', letResults.config.url)
       this.setState({ map: letResults.config.url })
-      // TODO:  call to the location IQ API using axios
 
       console.log(cityData.data[0])
-      // TODO: Take the return from axios and set that to state - hold cityData
       this.setState({
         cityData: cityData.data[0],
         error: false
       })
 
     } catch (error) {
-      // TODO: set state with the error boolean and error message
       this.setState({
         error: true,
         errorMsg: error.message
@@ -71,9 +58,6 @@ class Main extends React.Component {
           </label>
           <button type="submit">Explore!</button>
         </form>
-
-        {/* TERNARY - WTF */}
-        {/* condition ? true : false */}
 
         {
           this.state.error
