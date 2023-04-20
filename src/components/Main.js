@@ -1,14 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button'
+// import Card from 'react-bootstrap/Card';
+// import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Weather from './Weather'
-import Container from 'react-bootstrap/Container'
+import Weather from './Weather';
+import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { ListGroup } from 'react-bootstrap';
-import Image from 'react-bootstrap/Image'
+import Image from 'react-bootstrap/Image';
+import Movies from './movies';
 // import '.App.css'
 
 class Main extends React.Component {
@@ -27,6 +28,8 @@ class Main extends React.Component {
           weatherData: '',
           showWeather: false,
           dateData: '',
+          movieData: '',
+          showMovie: false,
       }
   }
   
@@ -90,6 +93,27 @@ class Main extends React.Component {
       }
   }
 
+  handleMovie = async (city) => {
+
+    try {
+        let url = `${process.env.REACT_APP_SERVER}/movie?city=${this.state.city}`;
+
+        let movieData = await axios.get(url);
+        console.log(movieData.data)
+        this.setState({
+            movieData: movieData.data,
+            showMovie: true,
+        })
+
+    } catch (error) {        
+        this.setState({
+            error: true,
+            errorMsg: "No movies here, sorry!",
+            showMovie: false,
+        })
+    }
+}
+
   render() {
       console.log('this.state.weatherData',this.state.weatherData);
       return (
@@ -139,6 +163,10 @@ class Main extends React.Component {
                           ? <Weather weatherData={this.state.weatherData} cityData={this.state.cityData} />
                           : <></>
                       }
+                      this.state.showMovie
+                            ? <Movies movieData={this.state.movieData}/>
+                            : <></>
+                        }
               </Container>
           </>
       )
