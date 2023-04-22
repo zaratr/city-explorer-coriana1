@@ -126,7 +126,7 @@ export default class Explorer extends React.Component {
                 <div className="movieItem">
                   <ShowMovies className="movieItem" movieDataArray={movieDataArray}></ShowMovies>
                 </div>
-                <div className='yelpItem'>
+                <div className="yelpItem">
                   <FetchYelp yelpData={yelpData}></FetchYelp>
                 </div>
               </div>
@@ -137,3 +137,4 @@ export default class Explorer extends React.Component {
     )
   }
 }
+
