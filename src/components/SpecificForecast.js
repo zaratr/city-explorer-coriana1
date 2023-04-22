@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import{ ListGroup } from 'react-bootstrap'
 // import './SpecificForecast.css'
 
-export default class SpecificForecast extends Component {
+export default class SpecificForecast extends React.Component {
   render() {
     return (
         <ListGroup className='mb-1 sf'>

@@ -1,10 +1,10 @@
 
-import React, { Component } from 'react'
+import React from 'react'
 import { Dropdown } from 'react-bootstrap'
 import SpecificForecast from './SpecificForecast'
 // import './ForecastWeather.css'
 
-export default class ForecastWeather extends Component {
+export default class ForecastWeather extends React.Component {
     constructor(props){
         super(props)
         this.state={

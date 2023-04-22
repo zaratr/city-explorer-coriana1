@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Carousel, ListGroup} from 'react-bootstrap'
 // import './FetchYelp.css'
 
-export default class ShowMovies extends Component {
+export default class ShowMovies extends React.Component {
     constructor(props){
         super(props)
         this.state={
