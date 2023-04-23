@@ -55,6 +55,7 @@ export default class Explorer extends React.Component {
     if(this.state.isFound === false) return
     axios.get(`${process.env.REACT_APP_SERVER}/weather?lat=${lat}&lon=${lon}`)
     .then((res) =>{
+      this.props.updateParent(res.data, null);
        this.setState({weatherDataObj:res.data})
     }).catch((error) =>{
         this.setState({weatherDataObj:{}})
@@ -66,6 +67,7 @@ export default class Explorer extends React.Component {
     if(this.state.isFound === false) return
     axios.get(`${process.env.REACT_APP_SERVER}/forecast?lat=${lat}&lon=${lon}`)
     .then((res) =>{
+      this.props.updateParent(null, res.data);
       this.setState({weatherForecast:[]})
     }).catch((error) =>{
       this.setState({weatherForecast:[]})

@@ -9,12 +9,29 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      weatherObj: null,
+      weatherforobj: null
+    };
+  };
+  updateParent = (obj1, obj2) =>{
+    console.log("obj1: ", obj1);
+    if(obj1 !== null) this.setState({weatherObj : obj1});
+    if(obj2 !== null) this.setState({weatherforobj: obj2});
+  }
   render(){
     return (
       <>
         <Header />
-        <Explorer/>
-        <Weather/>
+        <Explorer updateParent={this.updateParent}/>
+        <Weather 
+          // description={this.state.weatherObj.description}
+          // temp={this.state.weatherObj.temp}
+          // windSpeed={this.state.weatherObj.windSpeed}
+          // humidity={this.state.weatherObj.humidity}
+        />
         <SpecificForecast />
         {/* <Main /> */}
         <Footer />
