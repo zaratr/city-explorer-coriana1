@@ -22,6 +22,22 @@ Actual time needed to complete: 8 hrs
 
 ![Data Flow](image.png)
 
+
+Time Estimates
+
+For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
+
+Name of feature: Lab 10 Feature 1
+
+Estimate of time needed to complete: 6 hours
+
+Start time: 4:30 pm
+
+Finish time: 12:00 am
+
+Actual time needed to complete: 5 hours
+![Data Flow](whiteboard2.png)
+
 **Author**: Coriana Williams
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
