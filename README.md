@@ -36,7 +36,7 @@ Start time: 4:30 pm
 Finish time: 12:00 am
 
 Actual time needed to complete: 5 hours
-![Data Flow](whiteboard2.png)
+![Data Flow](whiteboard3.png)
 
 **Author**: Coriana Williams
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
