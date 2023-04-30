@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form, Button, Image} from 'react-bootstrap'
 import axios from 'axios'
-import Weather from './Weather';
+// import Weather from './Weather';
 import ForecastWeather from './ForecastWeather';
 import ShowMap from './ShowMap';
 import ShowMovies from './ShowMovies';
@@ -97,7 +97,7 @@ export default class Explorer extends React.Component {
         
         
           render() {
-            const{city, lat, lon, visible, showInfo, showError, statusCode, weatherDataObj, movieDataArray, weatherForecast, yelpData} = this.state
+            const{city, lat, lon, visible, showInfo, showError, statusCode, movieDataArray, weatherForecast, yelpData} = this.state
             return (
               <div className="text-light">
                   <Form onSubmit={this.handleCityInfo}>
