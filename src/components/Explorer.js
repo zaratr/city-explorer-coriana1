@@ -1,6 +1,6 @@
 import React from 'react';
-import {Form, Button, Image} from 'react-bootstrap'
-import axios from 'axios'
+import {Form, Button, Image} from 'react-bootstrap';
+import axios from 'axios';
 // import Weather from './Weather';
 import ForecastWeather from './ForecastWeather';
 import ShowMap from './ShowMap';
@@ -22,12 +22,12 @@ export default class Explorer extends React.Component {
       weatherForecast:[],
       movieDataArray:[],
       yelpData:[]
-    }
+    };
   }
 
   //Update the city value from Input  
   updateCity = (e) => {
-    this.setState({city: e.target.value})
+    this.setState({city: e.target.value});
   }
   
   //axios.GET method
@@ -35,17 +35,17 @@ export default class Explorer extends React.Component {
     e.preventDefault()
     await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_API_KEY}&format=json&q=${this.state.city}`)
     .then((res) =>{
-      let lat = parseFloat(res.data[0].lat).toFixed(2)
-      let lon = parseFloat(res.data[0].lon).toFixed(2)
-      this.setState({lat, lon, visible:"inline", showInfo:true})
-      this.getCurrentWeatherData(lat,lon)
-      this.getForecastWeatherData(lat,lon)
-      this.getMovieData(this.state.city)
-      this.getYelpData(lat,lon)
+      let lat = parseFloat(res.data[0].lat).toFixed(2);
+      let lon = parseFloat(res.data[0].lon).toFixed(2);
+      this.setState({lat, lon, visible:"inline", showInfo:true});
+      this.getCurrentWeatherData(lat,lon);
+      this.getForecastWeatherData(lat,lon);
+      this.getMovieData(this.state.city);
+      this.getYelpData(lat,lon);
     })
     .catch((error) =>{
-      this.setState({showInfo:false, showError:true, statusCode:error.request.status})
-      console.log({error:"Unable to geocode"})
+      this.setState({showInfo:false, showError:true, statusCode:error.request.status});
+      console.log({error:'Unable to geocode'});
     })
   }
 
@@ -54,11 +54,11 @@ export default class Explorer extends React.Component {
     axios.get(`${process.env.REACT_APP_SERVER}/weather?lat=${lat}&lon=${lon}`)
     .then((res) =>{
       this.props.updateParent(res.data, null);
-       this.setState({weatherDataObj:res.data})
+       this.setState({weatherDataObj:res.data});
     }).catch((error) =>{
-        this.setState({weatherDataObj:{}})
-        console.log({error: "Something went wrong."})
-    })
+        this.setState({weatherDataObj:{}});
+        console.log({error: 'Something went wrong.'});
+    });
   }
 
   getForecastWeatherData = (lat, lon) =>{
@@ -66,10 +66,10 @@ export default class Explorer extends React.Component {
     axios.get(`${process.env.REACT_APP_SERVER}/forecast?lat=${lat}&lon=${lon}`)
     .then((res) =>{
       this.props.updateParent(null, res.data);
-      this.setState({weatherForecast:[]})
+      this.setState({weatherForecast:[]});
     }).catch((error) =>{
-      this.setState({weatherForecast:[]})
-      console.log({error:"Cannot get forecast weather"})
+      this.setState({weatherForecast:[]});
+      console.log({error:'Cannot get forecast weather'});
     })
   }
 
@@ -77,22 +77,22 @@ export default class Explorer extends React.Component {
     if(this.state.isFound === false) return
     axios.get(`${process.env.REACT_APP_SERVER}/movie?city=${city}`)
     .then((res) =>{
-      this.setState({movieDataArray: res.data})
+      this.setState({movieDataArray: res.data});
     }).catch((error) =>{
-      this.setState({movieDataArray: []})
-      console.log({error: "Something went wrong"})
-    })
+      this.setState({movieDataArray: []});
+      console.log({error: 'Something went wrong'});
+    });
   }
 
   getYelpData = (lat ,lon) =>{
     if(this.state.isFound === false) return
     axios.get(`${process.env.REACT_APP_SERVER}/yelp?lat=${lat}&lon=${lon}`)
     .then((res) =>{
-        this.setState({yelpData:res.data})
+        this.setState({yelpData:res.data});
     }).catch((error) =>{
-        this.setState({yelpData:{}})
-                console.log({error: "Something went wrong."})
-            })
+        this.setState({yelpData:{}});
+                console.log({error: 'Something went wrong.'});
+            });
           }
         
         

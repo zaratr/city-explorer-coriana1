@@ -22,7 +22,6 @@ Actual time needed to complete: 8 hrs
 
 ![Data Flow](image.png)
 
-
 Time Estimates
 
 For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:

@@ -85,7 +85,7 @@ class Main extends React.Component {
   render() {
     return (
       <>
-        <h2>City Data</h2>
+        {/* <h2>City Data</h2> */}
         <form onSubmit={this.getCityData}>
           <label> Enter in a City name:
             <input type="text" onInput={this.handleCityInput} />
